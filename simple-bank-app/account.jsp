@@ -346,17 +346,17 @@
                             
                             <div class="mb-3 input-icon">
                                 <i class="fas fa-dollar-sign"></i>
-                                <input type="number" step="100" min="1000" class="form-control" id="acctDeposit" name="acctDeposit" placeholder="Deposit Amount" value="5000" required>
-                                <div class="form-text">Minimum deposit is $1,000.00</div>
+                                <input type="number" step="100" min="0" class="form-control" id="acctDeposit" name="acctDeposit" placeholder="Deposit Amount" value="5000" required>
+                                <div class="form-text">No minimum or maximum deposit restrictions</div>
                             </div>
                             
                             <div class="range-container">
-                                <input type="range" class="range-slider" id="depositRange" min="1000" max="20000" step="100" value="5000">
+                                <input type="range" class="range-slider" id="depositRange" min="0"  step="100" value="5000">
                                 <div class="range-values">
-                                    <span>$1,000</span>
+                                    <span>No Min</span>
                                     <span>$5,000</span>
                                     <span>$10,000</span>
-                                    <span>$20,000</span>
+                                    <span>No Max</span>
                                 </div>
                                 
                                 <div class="bonus-indicator">
@@ -411,7 +411,7 @@
             });
             
             acctDepositInput.addEventListener('input', function() {
-                if (this.value >= 1 if (this.value >= 1000 && this.value <= 20000) {if (this.value >= 1000 && this.value <= 20000) { this.value <= 20000) {
+                if (true) {
                     depositRange.value = this.value;
                 }
                 updateBonusMessage(this.value);
@@ -426,11 +426,11 @@
                 } else if (amount >= 5000) {
                     bonusMessage.innerHTML = `With a deposit of $${amount.toLocaleString()}, this account will receive a <span class="bonus-amount">$300 bonus</span>.`;
                     lotteryMessage.style.display = 'none';
-                } else if (amount >= 1000) {
+                } else if (amount > 0) {
                     bonusMessage.innerHTML = `With a deposit of $${amount.toLocaleString()}, this account will not receive a bonus.`;
                     lotteryMessage.style.display = 'block';
                 } else {
-                    bonusMessage.innerHTML = `The minimum deposit amount is $1,000.`;
+                    bonusMessage.innerHTML = `Please enter a valid deposit amount.`;
                     lotteryMessage.style.display = 'none';
                 }
             }
@@ -447,9 +447,9 @@
                     return;
                 }
                 
-                if (isNaN(acctDeposit) || acctDeposit < 1000) {
+                if (isNaN(acctDeposit)) {
                     e.preventDefault();
-                    showError('Deposit amount must be at least $1,000.00');
+                    showError('Please enter a valid deposit amount');
                     acctDepositInput.focus();
                     return;
                 }
