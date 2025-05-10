@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: newark-bank-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: newark_community_bank
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./setup_database.sql:/docker-entrypoint-initdb.d/setup_database.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      
+  tomcat:
+    image: tomcat:9.0
+    container_name: newark-bank-tomcat
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./simple-bank-app-docker.war:/usr/local/tomcat/webapps/simple-bank-app.war
+    depends_on:
+      mysql:
+        condition: service_healthy 
