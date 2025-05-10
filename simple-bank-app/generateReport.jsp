@@ -454,40 +454,46 @@
                             ],
                             datasets: [{
                                 data: [
-                                    <%= 
+                                    <% 
+                                    int count10k = 0;
                                     try {
                                         Class.forName("com.mysql.cj.jdbc.Driver");
                                         Connection c = DriverManager.getConnection("jdbc:mysql://mysql:3306/newark_community_bank", "root", "rootpassword");
                                         Statement s = c.createStatement();
                                         ResultSet r = s.executeQuery("SELECT COUNT(*) FROM new_accounts WHERE acct_deposit >= 10000");
                                         r.next();
-                                        out.print(r.getInt(1));
+                                        count10k = r.getInt(1);
+                                        out.print(count10k);
                                         r.close(); s.close(); c.close();
                                     } catch (Exception e) {
                                         out.print(0);
                                     }
                                     %>,
-                                    <%= 
+                                    <% 
+                                    int count5k = 0;
                                     try {
                                         Class.forName("com.mysql.cj.jdbc.Driver");
                                         Connection c = DriverManager.getConnection("jdbc:mysql://mysql:3306/newark_community_bank", "root", "rootpassword");
                                         Statement s = c.createStatement();
                                         ResultSet r = s.executeQuery("SELECT COUNT(*) FROM new_accounts WHERE acct_deposit >= 5000 AND acct_deposit < 10000");
                                         r.next();
-                                        out.print(r.getInt(1));
+                                        count5k = r.getInt(1);
+                                        out.print(count5k);
                                         r.close(); s.close(); c.close();
                                     } catch (Exception e) {
                                         out.print(0);
                                     }
                                     %>,
-                                    <%= 
+                                    <% 
+                                    int countLess5k = 0;
                                     try {
                                         Class.forName("com.mysql.cj.jdbc.Driver");
                                         Connection c = DriverManager.getConnection("jdbc:mysql://mysql:3306/newark_community_bank", "root", "rootpassword");
                                         Statement s = c.createStatement();
                                         ResultSet r = s.executeQuery("SELECT COUNT(*) FROM new_accounts WHERE acct_deposit < 5000");
                                         r.next();
-                                        out.print(r.getInt(1));
+                                        countLess5k = r.getInt(1);
+                                        out.print(countLess5k);
                                         r.close(); s.close(); c.close();
                                     } catch (Exception e) {
                                         out.print(0);
