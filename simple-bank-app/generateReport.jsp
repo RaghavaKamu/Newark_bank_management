@@ -254,9 +254,9 @@
                         Class.forName("com.mysql.cj.jdbc.Driver");
                         
                         // Connect to the database
-                        String url = "jdbc:mysql://localhost:3306/newark_community_bank";
+                        String url = "jdbc:mysql://mysql:3306/newark_community_bank";
                         String user = "root";
-                        String password = "";
+                        String password = "rootpassword";
                         
                         conn = DriverManager.getConnection(url, user, password);
                         
@@ -457,7 +457,7 @@
                                     <%= 
                                     try {
                                         Class.forName("com.mysql.cj.jdbc.Driver");
-                                        Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/newark_community_bank", "root", "");
+                                        Connection c = DriverManager.getConnection("jdbc:mysql://mysql:3306/newark_community_bank", "root", "rootpassword");
                                         Statement s = c.createStatement();
                                         ResultSet r = s.executeQuery("SELECT COUNT(*) FROM new_accounts WHERE acct_deposit >= 10000");
                                         r.next();
@@ -470,7 +470,7 @@
                                     <%= 
                                     try {
                                         Class.forName("com.mysql.cj.jdbc.Driver");
-                                        Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/newark_community_bank", "root", "");
+                                        Connection c = DriverManager.getConnection("jdbc:mysql://mysql:3306/newark_community_bank", "root", "rootpassword");
                                         Statement s = c.createStatement();
                                         ResultSet r = s.executeQuery("SELECT COUNT(*) FROM new_accounts WHERE acct_deposit >= 5000 AND acct_deposit < 10000");
                                         r.next();
@@ -483,7 +483,7 @@
                                     <%= 
                                     try {
                                         Class.forName("com.mysql.cj.jdbc.Driver");
-                                        Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/newark_community_bank", "root", "");
+                                        Connection c = DriverManager.getConnection("jdbc:mysql://mysql:3306/newark_community_bank", "root", "rootpassword");
                                         Statement s = c.createStatement();
                                         ResultSet r = s.executeQuery("SELECT COUNT(*) FROM new_accounts WHERE acct_deposit < 5000");
                                         r.next();

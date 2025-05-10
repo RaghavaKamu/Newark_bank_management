@@ -36,8 +36,8 @@
                             }
                             
                             // Validate deposit amount
-                            if (acctDeposit < 1000) {
-                                message = "Error: Deposit amount must be at least $1,000.00";
+                            if (acctDeposit < 1) {
+                                message = "Error: Deposit amount must be at least $1.00";
                             } else if (acctName == null || acctName.trim().isEmpty()) {
                                 message = "Error: Account holder name is required";
                             } else {
@@ -51,9 +51,9 @@
                                 
                                 // Insert into database
                                 Class.forName("com.mysql.cj.jdbc.Driver");
-                                String url = "jdbc:mysql://localhost:3306/newark_community_bank";
+                                String url = "jdbc:mysql://mysql:3306/newark_community_bank";
                                 String user = "root";
-                                String password = "";
+                                String password = "rootpassword";
                                 
                                 conn = DriverManager.getConnection(url, user, password);
                                 
