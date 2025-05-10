@@ -411,7 +411,7 @@
             });
             
             acctDepositInput.addEventListener('input', function() {
-                if (this.value >= 1000 && this.value <= 20000) {
+                if (this.value >= 1 if (this.value >= 1000 && this.value <= 20000) {if (this.value >= 1000 && this.value <= 20000) { this.value <= 20000) {
                     depositRange.value = this.value;
                 }
                 updateBonusMessage(this.value);
